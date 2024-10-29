@@ -36,6 +36,12 @@ public class GestionController {
         return "crear";
     }
 
+    @PostMapping("new")
+    private String guardarGestion(Gestion gestion, RedirectAttributes redirectAttributes) {
+        gestionService.crearGestion(gestion);
+        return "redirect:/";
+    }
+
     @GetMapping("/edit/{id}")
     public String mostrarFormulario(@PathVariable Long id, Model model) {
         // Busca la gestión existente por ID
