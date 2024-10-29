@@ -36,7 +36,7 @@ public class GestionController {
         return "crear";
     }
 
-    @PostMapping("new")
+    @PostMapping("/new")
     private String guardarGestion(Gestion gestion, RedirectAttributes redirectAttributes) {
         gestionService.crearGestion(gestion);
         return "redirect:/";
