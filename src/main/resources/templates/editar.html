@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<nav>
+    <form th:action="@{/logout}" th:method="post">
+        <div id="logout">
+            <button type="submit" id="logout_btn" class="btn btn-primary btn-block">
+                Salir
+            </button>
+        </div>
+    </form>
+</nav>
+<h1>Usted está en la plantilla editar</h1>
+
+<div class="container mt-5">
+    <h2>Editar Nueva Gestión</h2>
+    <form th:action="@{/edit/{id}(id=${gestion.id})}" th:object="${gestion}" method="post" class="needs-validation">
+        <div class="form-group">
+            <label for="placa">Placa</label>
+            <input type="text" class="form-control" id="placa" th:field="*{placa}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="ubicacion">Ubicación</label>
+            <input type="text" class="form-control" id="ubicacion" th:field="*{ubicacion}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tipoVehiculo">Tipo de Vehículo</label>
+            <select class="form-control" id="tipoVehiculo" th:field="*{tipoVehiculo}" required>
+                <option value="">Seleccione el tipo de vehículo</option>
+                <option th:each="tipo : ${tiposVehiculos}"
+                        th:value="${tipo}"
+                        th:text="${tipo.nombre}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
