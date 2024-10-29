@@ -40,7 +40,7 @@
             <td th:text="${#dates.format(gestion.horaSalida, 'yyyy-MM-dd HH:mm:ss')}"></td>
             <td th:text="${gestion.tipoVehiculo.nombre}"></td>
             <td>
-                <a sec:authorize="hasAnyRole('ROLE_ACOMODADOR', 'ROLE_ADMINISTRADOR')" th:href="@{/edit/{id}(id=${gestion.id)}" class="btn btn-primary">Editar</a>
+                <a sec:authorize="hasRole('ROLE_ADMINISTRADOR')" th:href="@{/edit/{id}(id=${gestion.id})}" class="btn btn-primary">Editar</a>
                 <a sec:authorize="hasAnyRole('ROLE_ACOMODADOR', 'ROLE_ADMINISTRADOR')" th:href="@{/edit/salida/{id}(id=${gestion.id})}" class="btn btn-primary">Registrar salida</a>
                 <a sec:authorize="hasAnyRole('ROLE_ACOMODADOR', 'ROLE_ADMINISTRADOR')" th:href="@{/delete/{id}(id=${gestion.id})}" class="btn btn-danger"
                    onclick="return confirm('¿Estás seguro de que deseas eliminar este registro?');">Eliminar</a>
